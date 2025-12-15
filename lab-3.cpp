@@ -1,7 +1,5 @@
 // primitive data types
 
-// 24:42
-
 #include <iostream>
 using namespace std;
 
