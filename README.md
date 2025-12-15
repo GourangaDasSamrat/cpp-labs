@@ -1,6 +1,6 @@
 # cpp-labs 🚀
 
-Personal C++ practice repository — a collection of small labs, exercises, and experiments I (GourangaDasSamrat) work on while learning and exploring C++. 💡
+Personal C++ practice repository — a collection of small labs, exercises, and experiments I work on while learning and exploring C++. 💡
 
 About
 -----
