@@ -1,4 +1,12 @@
 BasedOnStyle: Google
 IndentWidth: 4
+ContinuationIndentWidth: 4
 ColumnLimit: 100
 UseTab: Never
+
+Cpp11BracedListStyle: true
+AlignAfterOpenBracket: DontAlign
+BreakBeforeBraces: Attach
+
+BraceWrapping:
+  AfterInitializerList: true
