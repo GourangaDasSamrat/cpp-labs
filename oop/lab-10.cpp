@@ -1,6 +1,7 @@
 // Inheritance and final keyword
 
 #include <iostream>
+#include <memory>
 #include <string>
 
 using namespace std;
@@ -47,7 +48,7 @@ public:
 
 class Mocha : public Coffee {
 public:
-  Mocha(int serve) : Coffee("Cold coffee", serve) {
+  Mocha(int serve) : Coffee("Mocha", serve) {
     cout << coffeeName << " constructor called" << endl;
   }
 
@@ -67,7 +68,7 @@ public:
 
 int main() {
   Coffee *coffee1 = new ColdCoffee(2);
-  Coffee *coffee2 = new Mocha(4);
+  unique_ptr<Coffee> coffee2 = make_unique<Mocha>(4);
 
   coffee1->serve();
   coffee1->brew();
@@ -76,7 +77,6 @@ int main() {
   coffee2->brew();
 
   delete coffee1;
-  delete coffee2;
 
   return 0;
 }
