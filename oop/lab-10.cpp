@@ -75,5 +75,8 @@ int main() {
   coffee2->serve();
   coffee2->brew();
 
+  delete coffee1;
+  delete coffee2;
+
   return 0;
 }
