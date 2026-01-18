@@ -7,8 +7,16 @@
 
 using namespace std;
 
-// ---------------- STRUCTS ----------------
+// ---------------- COLORS ----------------
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define CYAN "\033[36m"
+#define BOLD "\033[1m"
 
+// ---------------- STRUCTS ----------------
 struct Product {
   int id;
   string name;
@@ -24,7 +32,6 @@ struct Order {
 };
 
 // ---------------- GLOBAL DATA ----------------
-
 vector<Product> products;
 map<int, int> stock;
 multimap<string, Order> orders;
@@ -33,8 +40,26 @@ unordered_map<string, string> customers;
 int orderCounter = 1;
 const string ADMIN_PASSWORD = "admin2026";
 
-// ---------------- SEED DATA ----------------
+// ---------------- UI HELPERS ----------------
+void line() {
+  cout << CYAN << string(90, '=') << RESET << endl;
+}
 
+void title() {
+  line();
+  cout << BOLD << BLUE;
+  cout
+    << " █████╗ ██████╗ ██████╗ ██╗     ███████╗    ███████╗████████╗ ██████╗ ██████╗ ███████╗\n"
+       "██╔══██╗██╔══██╗██╔══██╗██║     ██╔════╝    ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝\n"
+       "███████║██████╔╝██████╔╝██║     █████╗      ███████╗   ██║   ██║   ██║██████╔╝█████╗  \n"
+       "██╔══██║██╔═══╝ ██╔═══╝ ██║     ██╔══╝      ╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝  \n"
+       "██║  ██║██║     ██║     ███████╗███████╗    ███████║   ██║   ╚██████╔╝██║  ██║███████╗\n"
+       "╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝╚══════╝    ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝\n";
+  cout << RESET;
+  line();
+}
+
+// ---------------- SEED DATA ----------------
 void seedData() {
   products.push_back({101, "MacBook M4 Max", "Laptop"});
   products.push_back({102, "iPhone 17 Pro Max", "Smart Phone"});
@@ -53,12 +78,14 @@ void seedData() {
 }
 
 // ---------------- FUNCTIONS ----------------
-
 void showProducts() {
-  cout << "\n--- PRODUCTS ---\n";
+  line();
+  cout << BOLD << YELLOW << "📦 PRODUCT LIST\n" << RESET;
+  line();
+
   for (auto& p : products) {
-    cout << p.id << " | " << p.name << " | " << p.category
-         << " | Stock: " << stock[p.id] << endl;
+    cout << GREEN << p.id << RESET << " | " << p.name << " | " << p.category
+         << " | Stock: " << CYAN << stock[p.id] << RESET << endl;
   }
 }
 
@@ -81,7 +108,7 @@ void addProduct() {
   products.push_back(p);
   stock[p.id] = qty;
 
-  cout << "Product added successfully!\n";
+  cout << GREEN << "✔ Product added successfully!\n" << RESET;
 }
 
 void updateStock() {
@@ -92,13 +119,17 @@ void updateStock() {
   cin >> qty;
 
   stock[id] = qty;
-  cout << "Stock updated!\n";
+  cout << GREEN << "✔ Stock updated!\n" << RESET;
 }
 
 void viewAllOrders() {
-  cout << "\n--- ALL ORDERS ---\n";
+  line();
+  cout << BOLD << YELLOW << "📑 ALL ORDERS\n" << RESET;
+  line();
+
   for (auto& o : orders) {
-    cout << "Customer: " << o.first << " | OrderID: " << o.second.orderId
+    cout << "Customer: " << CYAN << o.first << RESET
+         << " | OrderID: " << o.second.orderId
          << " | ProductID: " << o.second.productId
          << " | Qty: " << o.second.quantity
          << " | Date: " << ctime(&o.second.date);
@@ -109,13 +140,13 @@ void placeOrder(string cid) {
   int pid, qty;
   showProducts();
 
-  cout << "Enter Product ID: ";
+  cout << "Product ID: ";
   cin >> pid;
   cout << "Quantity: ";
   cin >> qty;
 
   if (stock[pid] < qty) {
-    cout << "Not enough stock!\n";
+    cout << RED << "❌ Not enough stock!\n" << RESET;
     return;
   }
 
@@ -129,15 +160,17 @@ void placeOrder(string cid) {
   o.date = time(0);
 
   orders.insert({cid, o});
-  cout << "Order placed successfully!\n";
+  cout << GREEN << "✔ Order placed successfully!\n" << RESET;
 }
 
 void viewMyOrders(string cid) {
-  cout << "\n--- YOUR ORDERS ---\n";
-  auto range = orders.equal_range(cid);
+  line();
+  cout << BOLD << YELLOW << "🧾 YOUR ORDERS\n" << RESET;
+  line();
 
+  auto range = orders.equal_range(cid);
   if (range.first == range.second) {
-    cout << "No orders found.\n";
+    cout << RED << "No orders found.\n" << RESET;
     return;
   }
 
@@ -150,13 +183,15 @@ void viewMyOrders(string cid) {
 }
 
 // ---------------- MAIN ----------------
-
 int main() {
-  seedData();  // load default data
+  seedData();
+  title();
 
   int choice;
   while (true) {
-    cout << "\n1. Admin Login\n2. Customer Login\n0. Exit\nChoice: ";
+    cout << BOLD
+         << "\n👑 1. Admin Login\n👤 2. Customer Login\n❌ 0. Exit\nChoice: "
+         << RESET;
     cin >> choice;
 
     if (choice == 0)
@@ -169,18 +204,18 @@ int main() {
       cin >> pass;
 
       if (pass != ADMIN_PASSWORD) {
-        cout << "❌ Wrong password! Access denied.\n";
+        cout << RED << "❌ Wrong password!\n" << RESET;
         continue;
       }
 
       int adminChoice;
       while (true) {
-        cout << "\n--- ADMIN PANEL ---\n";
-        cout << "1. Add Product\n";
-        cout << "2. View Products\n";
-        cout << "3. Update Stock\n";
-        cout << "4. View All Orders\n";
-        cout << "0. Logout\nChoice: ";
+        cout << BOLD << CYAN << "\n--- ADMIN PANEL ---\n"
+             << "1. Add Product\n"
+             << "2. View Products\n"
+             << "3. Update Stock\n"
+             << "4. View All Orders\n"
+             << "0. Logout\nChoice: " << RESET;
         cin >> adminChoice;
 
         if (adminChoice == 0)
@@ -210,11 +245,11 @@ int main() {
 
       int custChoice;
       while (true) {
-        cout << "\n--- CUSTOMER MENU ---\n";
-        cout << "1. View Products\n";
-        cout << "2. Place Order\n";
-        cout << "3. View My Orders\n";
-        cout << "0. Logout\nChoice: ";
+        cout << BOLD << CYAN << "\n--- CUSTOMER MENU ---\n"
+             << "1. View Products\n"
+             << "2. Place Order\n"
+             << "3. View My Orders\n"
+             << "0. Logout\nChoice: " << RESET;
         cin >> custChoice;
 
         if (custChoice == 0)
@@ -229,6 +264,8 @@ int main() {
     }
   }
 
-  cout << "System Closed.\n";
+  line();
+  cout << GREEN << "✅ System Closed. Thank you!\n" << RESET;
+  line();
   return 0;
 }
