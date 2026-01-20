@@ -6,8 +6,8 @@
 using namespace std;
 
 int main() {
-  string pizzaTypes[4] = {"Calzone", "Neapolitan", "Chicago Deep-Dish",
-                          "Sicilian"};
+  string pizzaTypes[4] = {
+    "Calzone", "Neapolitan", "Chicago Deep-Dish", "Sicilian"};
 
   for (int i = 0; i < 4; i++) {
     if (pizzaTypes[i] == "Neapolitan") {

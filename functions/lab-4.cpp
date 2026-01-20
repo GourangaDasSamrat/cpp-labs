@@ -5,7 +5,9 @@
 using namespace std;
 
 int main() {
-  auto servedCoffee = [](int cups) { cout << "Serving " << cups << " cups coffee" << endl; };
+  auto servedCoffee = [](int cups) {
+    cout << "Serving " << cups << " cups coffee" << endl;
+  };
 
   servedCoffee(10);
 

@@ -5,29 +5,30 @@
 using namespace std;
 
 int* prepareCoffeeOrders(int cups) {
-    int* orders = new int[cups];
+  int* orders = new int[cups];
 
-    for (int i = 0; i < cups; i++) {
-        orders[i] = (i + 1) * 10;
-    }
+  for (int i = 0; i < cups; i++) {
+    orders[i] = (i + 1) * 10;
+  }
 
-    return orders;
+  return orders;
 }
 
 int main() {
-    int cups = 0;
+  int cups = 0;
 
-    cout << "Enter how may cups of coffee you want: ";
-    cin >> cups;
+  cout << "Enter how may cups of coffee you want: ";
+  cin >> cups;
 
-    int* coffeeOrders = prepareCoffeeOrders(cups);
+  int* coffeeOrders = prepareCoffeeOrders(cups);
 
-    for (int i; i < cups; i++) {
-        cout << "Cup " << i + 1 << " has " << coffeeOrders[i] << " ml coffee" << endl;
-    }
+  for (int i; i < cups; i++) {
+    cout << "Cup " << i + 1 << " has " << coffeeOrders[i] << " ml coffee"
+         << endl;
+  }
 
-    // memory cleanup
-    delete[] coffeeOrders;
+  // memory cleanup
+  delete[] coffeeOrders;
 
-    return 0;
+  return 0;
 }

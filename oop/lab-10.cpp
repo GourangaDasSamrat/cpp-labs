@@ -9,16 +9,18 @@ using namespace std;
 // base/parent/main class
 
 class Coffee {
-protected:
+ protected:
   string coffeeName;
   int servings;
 
-public:
+ public:
   Coffee(string name, int serve) : coffeeName(name), servings(serve) {
     cout << "Coffee constructor called for " << name << endl;
   }
 
-  virtual void brew() const { cout << "Brewing " << coffeeName << endl; }
+  virtual void brew() const {
+    cout << "Brewing " << coffeeName << endl;
+  }
   virtual void serve() const {
     cout << "Serving " << servings << "cups of coffee" << endl;
   }
@@ -31,7 +33,7 @@ public:
 // derived classes
 
 class ColdCoffee : public Coffee {
-public:
+ public:
   ColdCoffee(int serve) : Coffee("Cold coffee", serve) {
     cout << coffeeName << " constructor called" << endl;
   }
@@ -43,11 +45,13 @@ public:
     cout << "Serving " << servings << "cups of coffee" << endl;
   }
 
-  ~ColdCoffee() { cout << coffeeName << " destructor called" << endl; }
+  ~ColdCoffee() {
+    cout << coffeeName << " destructor called" << endl;
+  }
 };
 
 class Mocha : public Coffee {
-public:
+ public:
   Mocha(int serve) : Coffee("Mocha", serve) {
     cout << coffeeName << " constructor called" << endl;
   }
@@ -56,7 +60,9 @@ public:
     cout << "Brewing " << coffeeName << " with extra chocolate" << endl;
   }
 
-  ~Mocha() { cout << coffeeName << " destructor called" << endl; }
+  ~Mocha() {
+    cout << coffeeName << " destructor called" << endl;
+  }
 };
 
 // class Latte : public Mocha {
@@ -67,7 +73,7 @@ public:
 // };
 
 int main() {
-  Coffee *coffee1 = new ColdCoffee(2);
+  Coffee* coffee1 = new ColdCoffee(2);
   unique_ptr<Coffee> coffee2 = make_unique<Mocha>(4);
 
   coffee1->serve();

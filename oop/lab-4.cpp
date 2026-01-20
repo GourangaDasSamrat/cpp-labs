@@ -7,9 +7,9 @@ using namespace std;
 
 class Form {
   // access modifier
-public:
+ public:
   // data members / attributes /property
-  string *fullName;
+  string* fullName;
   int mobileMNumber;
   string emailAddress;
   vector<string> skills;
@@ -24,7 +24,7 @@ public:
   }
 
   // copy constructor
-  Form(const Form &other) {
+  Form(const Form& other) {
     fullName = new string(*other.fullName);
     mobileMNumber = other.mobileMNumber;
     emailAddress = other.emailAddress;
@@ -32,7 +32,9 @@ public:
   }
 
   // destructor
-  ~Form() { delete fullName; }
+  ~Form() {
+    delete fullName;
+  }
 
   // member function / method
   void displayDetails() {
@@ -51,8 +53,11 @@ public:
 };
 
 int main() {
-  Form userOne("Gouranga Das Samrat", 1282984834, "gouranga.samrat@gmail.com",
-               {"PYthon", "JavaScript", "C++"});
+  Form userOne(
+    "Gouranga Das Samrat",
+    1282984834,
+    "gouranga.samrat@gmail.com",
+    {"PYthon", "JavaScript", "C++"});
 
   //   userOne.displayDetails();
 

@@ -6,16 +6,18 @@
 using namespace std;
 
 class BankAccount {
-private:
+ private:
   string accountNumber;
   double balance;
 
-public:
+ public:
   BankAccount(string accNum, double initialBalance)
       : accountNumber(accNum), balance(initialBalance) {}
 
   // check balance
-  double getBalance() const { return balance; }
+  double getBalance() const {
+    return balance;
+  }
 
   // deposit money
   void deposit(double amount) {
@@ -54,28 +56,28 @@ int main() {
     cin >> choice;
 
     switch (choice) {
-    case 1:
-      cout << "Current Balance: $" << userOne.getBalance() << endl;
-      break;
+      case 1:
+        cout << "Current Balance: $" << userOne.getBalance() << endl;
+        break;
 
-    case 2:
-      cout << "Enter deposit amount: ";
-      cin >> amount;
-      userOne.deposit(amount);
-      break;
+      case 2:
+        cout << "Enter deposit amount: ";
+        cin >> amount;
+        userOne.deposit(amount);
+        break;
 
-    case 3:
-      cout << "Enter withdraw amount: ";
-      cin >> amount;
-      userOne.withdraw(amount);
-      break;
+      case 3:
+        cout << "Enter withdraw amount: ";
+        cin >> amount;
+        userOne.withdraw(amount);
+        break;
 
-    case 4:
-      cout << "Thank you for using the bank system!" << endl;
-      break;
+      case 4:
+        cout << "Thank you for using the bank system!" << endl;
+        break;
 
-    default:
-      cout << "Invalid choice! Please try again." << endl;
+      default:
+        cout << "Invalid choice! Please try again." << endl;
     }
 
   } while (choice != 4);

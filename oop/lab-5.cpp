@@ -6,14 +6,14 @@
 using namespace std;
 
 class Coffee {
-private:
+ private:
   string coffeeName;
   int servings;
 
-public:
+ public:
   Coffee(string name, int serve) : coffeeName(name), servings(serve) {}
 
-  friend bool compareServings(const Coffee &coffee1, const Coffee &coffee2);
+  friend bool compareServings(const Coffee& coffee1, const Coffee& coffee2);
 
   void display() const {
     cout << "Coffee name: " << coffeeName << endl;
@@ -21,7 +21,7 @@ public:
   }
 };
 
-bool compareServings(const Coffee &coffee1, const Coffee &coffee2) {
+bool compareServings(const Coffee& coffee1, const Coffee& coffee2) {
   return coffee1.servings > coffee2.servings;
 }
 

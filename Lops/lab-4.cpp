@@ -9,7 +9,6 @@ int main() {
   string response;
 
   while (true) {
-
     cout << "Do you need more pizza (type stop to exit) ?";
     cin >> response;
 

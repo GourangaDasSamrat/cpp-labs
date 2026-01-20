@@ -7,7 +7,7 @@
 using namespace std;
 
 class Coffee {
-public:
+ public:
   string coffeeName;
   int servings;
   vector<string> ingredients;
@@ -18,7 +18,9 @@ public:
   Coffee(string name, int serve, vector<string> ingredients)
       : coffeeName(name), servings(serve), ingredients(ingredients) {}
 
-  void setIngredients(vector<string> item) { ingredients = item; }
+  void setIngredients(vector<string> item) {
+    ingredients = item;
+  }
 
   void displayCoffeeDetails() {
     cout << "Coffee name: " << coffeeName << endl;

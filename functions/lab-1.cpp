@@ -5,14 +5,18 @@
 using namespace std;
 
 // declaration & definition of function
-int CheckTemp(int temp) { return temp; }
+int CheckTemp(int temp) {
+  return temp;
+}
 
 // declaration of function
 void serveCoffee(int cups);
 
 // function overloading
-void serveCoffee(string type = "Cold brew", int cups = 1) {  // Cold brew and 1 is default value
-  int a = 10;                                                // a is formal parameter
+void serveCoffee(
+  string type = "Cold brew",
+  int cups = 1) {  // Cold brew and 1 is default value
+  int a = 10;      // a is formal parameter
   cout << "Serving " << cups << " of " << type << endl;
 }
 
@@ -28,4 +32,6 @@ int main() {
 }
 
 // definition of function
-void serveCoffee(int cups) { cout << "\nServred " << cups << " cups coffee" << endl; };
+void serveCoffee(int cups) {
+  cout << "\nServred " << cups << " cups coffee" << endl;
+};

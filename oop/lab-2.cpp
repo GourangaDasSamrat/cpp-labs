@@ -7,7 +7,7 @@ using namespace std;
 
 class Form {
   // access modifier
-public:
+ public:
   // data members / attributes /property
   string fullName;
   int mobileMNumber;

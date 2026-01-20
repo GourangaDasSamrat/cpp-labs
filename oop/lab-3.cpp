@@ -7,7 +7,7 @@ using namespace std;
 
 class Form {
   // access modifier
-public:
+ public:
   // data members / attributes /property
   string fullName;
   int mobileMNumber;
@@ -39,8 +39,11 @@ public:
 };
 
 int main() {
-  Form userOne("Gouranga Das Samrat", 1282984834, "gouranga.samrat@gmail.com",
-               {"PYthon", "JavaScript", "C++"});
+  Form userOne(
+    "Gouranga Das Samrat",
+    1282984834,
+    "gouranga.samrat@gmail.com",
+    {"PYthon", "JavaScript", "C++"});
   userOne.displayDetails();
 
   return 0;

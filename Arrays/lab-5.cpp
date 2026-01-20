@@ -6,19 +6,19 @@ using namespace std;
 
 int main() {
   string foodsTypes[3][4] = {
-      {
-          "Cold Brew",
-          "Cappuccino",
-          "Mocha",
-          "Iced Coffees",
-      },
-      {
-          "Neapolitan",
-          "Chicago Deep-Dish",
-          "Sicilian",
-          "Detroit-Style",
-      },
-      {"Kashmiri", "Ginger", "Milk", "Traditional"},
+    {
+      "Cold Brew",
+      "Cappuccino",
+      "Mocha",
+      "Iced Coffees",
+    },
+    {
+      "Neapolitan",
+      "Chicago Deep-Dish",
+      "Sicilian",
+      "Detroit-Style",
+    },
+    {"Kashmiri", "Ginger", "Milk", "Traditional"},
   };
 
   for (int i = 0; i < 3; i++) {

@@ -7,12 +7,12 @@
 using namespace std;
 
 class Coffee {
-private:
+ private:
   string coffeeName;
   int servings;
   vector<string> ingredients;
 
-public:
+ public:
   Coffee() {
     coffeeName = "Unknown coffee";
     servings = 1;
@@ -23,22 +23,34 @@ public:
       : coffeeName(name), servings(serve), ingredients(ingredients) {}
 
   // getter for Coffee name
-  string getCoffeeName() { return coffeeName; }
+  string getCoffeeName() {
+    return coffeeName;
+  }
 
   // setter for Coffee name
-  void setCoffeeName(string name) { coffeeName = name; }
+  void setCoffeeName(string name) {
+    coffeeName = name;
+  }
 
   // getter for servings
-  int getServings() { return servings; }
+  int getServings() {
+    return servings;
+  }
 
   // setter for servings
-  void setServings(int serve) { servings = serve; }
+  void setServings(int serve) {
+    servings = serve;
+  }
 
   // getter for ingredients
-  vector<string> getIngredients() { return ingredients; }
+  vector<string> getIngredients() {
+    return ingredients;
+  }
 
   // setter for ingredients
-  void setIngredients(vector<string> item) { ingredients = item; }
+  void setIngredients(vector<string> item) {
+    ingredients = item;
+  }
 
   void displayCoffeeDetails() {
     cout << "Coffee name: " << coffeeName << endl;
