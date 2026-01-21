@@ -52,9 +52,18 @@ int main() {
 
   for_each(highEarners.begin(), highEarners.end(), displayEmployee);
 
-  double totalSum = accumulate(
+  double totalSalary = accumulate(
     employees.begin(), employees.end(), 0, [](double sum, const Employee& e) {
       return sum + e.salary;
+    });
+
+  double avarageSalary = totalSalary / employees.size();
+
+  auto highestPaid = max_element(
+    employees.begin(),
+    employees.end(),
+    [](const Employee& e1, const Employee& e2) {
+      return e1.salary < e2.salary;
     });
 
   return 0;
